@@ -1,33 +1,42 @@
 {
-  "name": "eslint-plugin-no-use-in-server",
-  "version": "0.0.0",
-  "description": "Do not use client variables on the server",
-  "keywords": [
-    "eslint",
-    "eslintplugin",
-    "eslint-plugin"
-  ],
-  "author": "eslint-plugin-nuxt-client",
-  "main": "./lib/index.js",
-  "exports": "./lib/index.js",
-  "scripts": {
-    "lint": "eslint .",
-    "test": "mocha tests --recursive"
-  },
-  "dependencies": {
-    "requireindex": "^1.2.0"
-  },
-  "devDependencies": {
-    "eslint": "^8.19.0",
-    "eslint-plugin-eslint-plugin": "^5.0.0",
-    "eslint-plugin-node": "^11.1.0",
-    "mocha": "^10.0.0"
-  },
-  "engines": {
-    "node": "^14.17.0 || ^16.0.0 || >= 18.0.0"
-  },
-  "peerDependencies": {
-    "eslint": ">=7"
-  },
-  "license": "ISC"
+    "name": "eslint-plugin-nuxt-client",
+    "version": "0.0.0",
+    "description": "disallow use client variables on the server",
+    "keywords": [
+        "nuxt",
+        "eslint",
+        "eslintplugin",
+        "eslint-plugin",
+        "eslint-plugin-nuxt",
+        "eslint-plugin-nuxt-client"
+    ],
+    "files": [
+        "lib",
+        "!__tests__"
+    ],
+    "author": "shaobeichen",
+    "main": "./lib/index.js",
+    "exports": "./lib/index.js",
+    "scripts": {
+        "lint": "eslint .",
+        "test": "mocha tests --recursive"
+    },
+    "dependencies": {
+        "eslint-plugin-vue": "^9.8.0",
+        "requireindex": "^1.2.0",
+        "vue-eslint-parser": "^9.1.0"
+    },
+    "devDependencies": {
+        "eslint": "^8.19.0",
+        "eslint-plugin-eslint-plugin": "^5.0.0",
+        "eslint-plugin-node": "^11.1.0",
+        "mocha": "^10.0.0"
+    },
+    "engines": {
+        "node": "^14.17.0 || ^16.0.0 || >= 18.0.0"
+    },
+    "peerDependencies": {
+        "eslint": ">=0.0.2"
+    },
+    "license": "MIT"
 }
