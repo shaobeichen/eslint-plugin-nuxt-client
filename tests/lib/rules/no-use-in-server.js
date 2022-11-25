@@ -1,94 +1,88 @@
-/**
- * @fileoverview Do not use client variables on the server
- * @author shaobeichen
- */
-'use strict'
-
-//------------------------------------------------------------------------------
-// Requirements
-//------------------------------------------------------------------------------
-
 const rule = require('../../../lib/rules/no-use-in-server')
-
-const RuleTester = require('eslint').RuleTester
+const { RuleTester } = require('eslint')
 
 const parserOptions = {
-  ecmaVersion: 2018,
+  ecmaVersion: 2020,
   sourceType: 'module',
 }
 
-//------------------------------------------------------------------------------
-// Tests
-//------------------------------------------------------------------------------
+const parser = require.resolve('vue-eslint-parser')
 
-const ruleTester = new RuleTester()
+// ------------------------------------------------------------------------------
+// Tests
+// ------------------------------------------------------------------------------
+
+const ruleTester = new RuleTester({
+  parser,
+  parserOptions,
+})
+
 ruleTester.run('no-use-in-server', rule, {
   valid: [
-    // give me some code that won't trigger a warning
-    // {
-    //   filename: 'test.vue',
-    //   code: `
-    //       export default {
-    //         created() {
-    //           const path = this.$route.path
-    //         },
-    //         beforeCreate() {
-    //           const path = this.$route.params.foo
-    //         }
-    //       }
-    //     `,
-    //   parserOptions,
-    // },
+    {
+      filename: 'test.vue',
+      code: `
+            <script>
+            const href = location.href
+            export default {
+                    computed: {
+                      name() {
+                        return href
+                      }
+                    }, 
+                }
+            </script>
+            `,
+      parserOptions,
+    },
   ],
-
   invalid: [
     {
       filename: 'test.vue',
       code: `
-          export default {
-            created() {
-              const path = window.location.pathname
-            },
-            beforeCreate() {
-              const foo = document.foo
-            }
-          }
-        `,
+            <template>
+              <div>{{ foo }}</div>
+            </template>
+            <script>
+              export default {
+                data() {
+                  return {
+                    s: document.name,
+                  }
+                },
+                computed: {
+                  foo() {
+                      window.x = 3;
+                      return 1;
+                  }
+                },
+                created() {
+                  console.log(window.xx)
+                },
+                beforeCreate() {
+                  console.log(document.cookies)
+                },
+              }
+            </script>
+          `,
       errors: [
         {
-          message: 'Unexpected window in created.',
-          type: 'MemberExpression',
+          message: 'document in data maybe cause ssr error.',
+          line: 9,
         },
         {
-          message: 'Unexpected document in beforeCreate.',
-          type: 'MemberExpression',
+          message: 'window in computed maybe cause ssr error.',
+          line: 14,
+        },
+        {
+          message: 'window in created maybe cause ssr error.',
+          line: 19,
+        },
+        {
+          message: 'document in beforeCreate maybe cause ssr error.',
+          line: 22,
         },
       ],
-      parserOptions,
     },
-    // {
-    //   filename: 'test.vue',
-    //   code: `
-    //       export default {
-    //         created() {
-    //           document.foo = 'bar'
-    //         },
-    //         beforeCreate() {
-    //           window.foo = 'bar'
-    //         }
-    //       }
-    //     `,
-    //   errors: [
-    //     {
-    //       message: 'Unexpected document in created.',
-    //       type: 'MemberExpression',
-    //     },
-    //     {
-    //       message: 'Unexpected window in beforeCreate.',
-    //       type: 'MemberExpression',
-    //     },
-    //   ],
-    //   parserOptions,
-    // },
   ],
 })

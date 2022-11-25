@@ -11,18 +11,18 @@
         "eslint-plugin-nuxt-client"
     ],
     "files": [
-        "lib",
-        "!__tests__"
+        "lib"
     ],
     "author": "shaobeichen",
     "main": "./lib/index.js",
     "exports": "./lib/index.js",
     "scripts": {
-        "lint": "eslint .",
+        "lint": "eslint --fix --ext .js,.vue test",
         "test": "mocha tests --recursive"
     },
     "dependencies": {
         "eslint-plugin-vue": "^9.8.0",
+        "globals": "^13.18.0",
         "requireindex": "^1.2.0",
         "vue-eslint-parser": "^9.1.0"
     },
