@@ -18,7 +18,7 @@
     "exports": "./lib/index.js",
     "scripts": {
         "lint": "eslint --fix --ext .js,.vue test",
-        "test": "mocha tests --recursive"
+        "test": "clear && mocha tests --recursive"
     },
     "dependencies": {
         "eslint-plugin-vue": "^9.8.0",

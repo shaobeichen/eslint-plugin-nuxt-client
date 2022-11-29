@@ -22,16 +22,15 @@ ruleTester.run('no-use-in-server', rule, {
     {
       filename: 'test.vue',
       code: `
-            <script>
-            const href = location.href
-            export default {
-                    computed: {
-                      name() {
-                        return href
-                      }
-                    }, 
-                }
-            </script>
+      <script>
+        export default {
+        computed: {
+            name() {
+                return process.client && window.b
+            },
+        },
+        }
+        </script>
             `,
       parserOptions,
     },
@@ -40,31 +39,31 @@ ruleTester.run('no-use-in-server', rule, {
     {
       filename: 'test.vue',
       code: `
-            <template>
-              <div>{{ foo }}</div>
-            </template>
-            <script>
-              export default {
-                data() {
-                  return {
-                    s: document.name,
-                  }
-                },
-                computed: {
-                  foo() {
-                      window.x = 3;
-                      return 1;
-                  }
-                },
-                created() {
-                  console.log(window.xx)
-                },
-                beforeCreate() {
-                  console.log(document.cookies)
-                },
-              }
-            </script>
-          `,
+      <template>
+        <div>{{ foo }}</div>
+      </template>
+      <script>
+        export default {
+          data() {
+            return {
+              s: document.name,
+            }
+          },
+          computed: {
+            foo() {
+                window.x = 3
+                return 1
+            }
+          },
+          created() {
+            console.log(window.xx)
+          },
+          beforeCreate() {
+            console.log(document.cookies)
+          },
+        }
+      </script>
+              `,
       errors: [
         {
           message: 'document in data maybe cause ssr error.',
