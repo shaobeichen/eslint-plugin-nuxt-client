@@ -1,4 +1,4 @@
-# eslint-plugin-no-use-in-server
+# eslint-plugin-no-globals-in-server
 
 Do not use client variables on the server
 
@@ -10,37 +10,32 @@ You'll first need to install [ESLint](https://eslint.org/):
 npm i eslint --save-dev
 ```
 
-Next, install `eslint-plugin-no-use-in-server`:
+Next, install `eslint-plugin-no-globals-in-server`:
 
 ```sh
-npm install eslint-plugin-no-use-in-server --save-dev
+npm install eslint-plugin-no-globals-in-server --save-dev
 ```
 
 ## Usage
 
-Add `no-use-in-server` to the plugins section of your `.eslintrc` configuration file. You can omit the `eslint-plugin-` prefix:
+Add `no-globals-in-server` to the plugins section of your `.eslintrc` configuration file. You can omit the `eslint-plugin-` prefix:
 
 ```json
 {
-    "plugins": [
-        "no-use-in-server"
-    ]
+  "plugins": ["no-globals-in-server"]
 }
 ```
-
 
 Then configure the rules you want to use under the rules section.
 
 ```json
 {
-    "rules": {
-        "no-use-in-server/rule-name": 2
-    }
+  "rules": {
+    "no-globals-in-server/rule-name": 2
+  }
 }
 ```
 
 ## Supported Rules
 
-* Fill in provided rules here
-
-
+- Fill in provided rules here
