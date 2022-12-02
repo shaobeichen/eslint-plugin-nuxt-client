@@ -1,0 +1,42 @@
+{
+    "branches": [
+        {
+            "name": "main"
+        },
+        {
+            "name": "next",
+            "channel": "next",
+            "prerelease": true
+        }
+    ],
+    "plugins": [
+        "@semantic-release/commit-analyzer",
+        "@semantic-release/release-notes-generator",
+        "@semantic-release/changelog",
+        "@semantic-release/npm",
+        [
+            "@semantic-release/git",
+            {
+                "assets": [
+                    "package.json",
+                    "package-lock.json",
+                    "CHANGELOG.md"
+                ],
+                "message": "release: v${nextRelease.version} [skip ci] \n\n${nextRelease.notes}"
+            }
+        ],
+        "@semantic-release/github",
+        [
+            "@saithodev/semantic-release-backmerge",
+            {
+                "branches": [
+                    {
+                        "from": "main",
+                        "to": "next"
+                    }
+                ],
+                "clearWorkspace": true
+            }
+        ]
+    ]
+}
