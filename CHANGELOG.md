@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/shaobeichen/eslint-plugin-nuxt-client/compare/v1.0.0...v1.0.1) (2022-12-02)
+
+
+### Bug Fixes
+
+* fix package main entrance ([226f633](https://github.com/shaobeichen/eslint-plugin-nuxt-client/commit/226f633dbfb8fec9a76d4633af874c4fd79753cf))
+
 # 1.0.0 (2022-12-02)
 
 

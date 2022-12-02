@@ -1,6 +1,6 @@
 {
     "name": "eslint-plugin-nuxt-client",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "disallow use client variables on the server",
     "files": [
         "lib"
