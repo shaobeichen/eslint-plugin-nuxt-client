@@ -1,41 +1,13 @@
-# eslint-plugin-no-globals-in-server
+# eslint-plugin-nuxt-client
 
-Do not use client variables on the server
-
-## Installation
-
-You'll first need to install [ESLint](https://eslint.org/):
-
-```sh
-npm i eslint --save-dev
-```
-
-Next, install `eslint-plugin-no-globals-in-server`:
-
-```sh
-npm install eslint-plugin-no-globals-in-server --save-dev
-```
+ESLint plugin for Nuxt.js, disallow use client variables on the server.
 
 ## Usage
 
-Add `no-globals-in-server` to the plugins section of your `.eslintrc` configuration file. You can omit the `eslint-plugin-` prefix:
+1. Use our preset to extend recommended defaults:
 
 ```json
 {
-  "plugins": ["no-globals-in-server"]
+  "extends": ["plugin:nuxt-client/recommended"]
 }
 ```
-
-Then configure the rules you want to use under the rules section.
-
-```json
-{
-  "rules": {
-    "no-globals-in-server/rule-name": 2
-  }
-}
-```
-
-## Supported Rules
-
-- Fill in provided rules here

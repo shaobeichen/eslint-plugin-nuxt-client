@@ -2,20 +2,19 @@
     "name": "eslint-plugin-nuxt-client",
     "version": "1.0.0",
     "description": "disallow use client variables on the server",
-    "keywords": [
-        "nuxt",
-        "eslint",
-        "eslintplugin",
-        "eslint-plugin",
-        "eslint-plugin-nuxt",
-        "eslint-plugin-nuxt-client"
-    ],
     "files": [
         "lib"
     ],
     "author": "shaobeichen",
-    "main": "./lib/index.js",
-    "exports": "./lib/index.js",
+    "main": "lib/index.js",
+    "homepage": "https://github.com/shaobeichen/eslint-plugin-nuxt-client#readme",
+    "bugs": {
+        "url": "https://github.com/shaobeichen/eslint-plugin-nuxt-client/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/shaobeichen/eslint-plugin-nuxt-client.git"
+    },
     "scripts": {
         "lint": "eslint --fix --ext .js,.vue test",
         "test": "clear && mocha tests --recursive",
@@ -26,10 +25,17 @@
         "release:patch": "standard-version --release-as patch",
         "semantic-release": "dotenv -c -- semantic-release"
     },
+    "keywords": [
+        "nuxt",
+        "eslint",
+        "eslintplugin",
+        "eslint-plugin",
+        "eslint-plugin-nuxt",
+        "eslint-plugin-nuxt-client"
+    ],
     "dependencies": {
         "eslint-plugin-vue": "^9.8.0",
         "globals": "^13.18.0",
-        "requireindex": "^1.2.0",
         "vue-eslint-parser": "^9.1.0"
     },
     "devDependencies": {
@@ -47,12 +53,6 @@
         "mocha": "^10.0.0",
         "semantic-release": "^19.0.5",
         "standard-version": "^9.5.0"
-    },
-    "engines": {
-        "node": "^14.17.0 || ^16.0.0 || >= 18.0.0"
-    },
-    "peerDependencies": {
-        "eslint": ">=0.0.2"
     },
     "license": "MIT"
 }
