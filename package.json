@@ -16,7 +16,7 @@
         "url": "git+https://github.com/shaobeichen/eslint-plugin-nuxt-client.git"
     },
     "scripts": {
-        "lint": "eslint --fix --ext .js,.vue test",
+        "lint": "eslint --fix --ext .js,.vue",
         "test": "clear && mocha tests --recursive",
         "release": "npm run semantic-release",
         "release:beta": "standard-version --release-as major --prerelease beta",
